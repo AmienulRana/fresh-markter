@@ -1,0 +1,12 @@
+---
+import DashboardLayout from '@/components/templates/DashboardLayout.astro'
+import { CustomerForm } from '@/components/organisms/admin/customers/CustomerForm'
+---
+
+<DashboardLayout
+  title="Tambah pelanggan"
+  heading="Tambah pelanggan"
+  breadcrumbs={[{ label: 'Pelanggan', href: '/dashboard/customers' }, { label: 'Tambah' }]}
+>
+  <CustomerForm client:only="react" />
+</DashboardLayout>

@@ -1,0 +1,10 @@
+---
+import DashboardLayout from '@/components/templates/DashboardLayout.astro'
+import { RoleForm } from '@/components/organisms/admin/roles/RoleForm'
+
+const id = Astro.params.id ?? ''
+---
+
+<DashboardLayout title="Ubah role" heading="Ubah role" breadcrumbs={[{ label: 'Role', href: '/dashboard/role' }, { label: 'Ubah' }]}>
+  <RoleForm client:only="react" roleId={id} />
+</DashboardLayout>

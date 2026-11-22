@@ -1,0 +1,12 @@
+---
+import DashboardLayout from '@/components/templates/DashboardLayout.astro'
+import { CategoryForm } from '@/components/organisms/admin/categories/CategoryForm'
+---
+
+<DashboardLayout
+  title="Tambah kategori"
+  heading="Tambah kategori"
+  breadcrumbs={[{ label: 'Kategori', href: '/dashboard/categories' }, { label: 'Tambah' }]}
+>
+  <CategoryForm client:only="react" />
+</DashboardLayout>

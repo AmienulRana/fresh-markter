@@ -1,0 +1,11 @@
+---
+import DashboardLayout from '@/components/templates/DashboardLayout.astro'
+import { OrderTable } from '@/components/organisms/admin/orders/OrderTable'
+
+const status = Astro.url.searchParams.get('status') ?? ''
+const search = Astro.url.searchParams.get('search') ?? ''
+---
+
+<DashboardLayout title="Pesanan" heading="Pesanan" description="Pantau dan proses pesanan pelanggan." breadcrumbs={[{ label: 'Pesanan' }]}>
+  <OrderTable client:load initialStatus={status} initialSearch={search} />
+</DashboardLayout>

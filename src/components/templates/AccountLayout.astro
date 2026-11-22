@@ -1,0 +1,29 @@
+---
+import StorefrontLayout from './StorefrontLayout.astro'
+import { AccountNav } from '@/components/organisms/account/AccountNav'
+import { Breadcrumb } from '@/components/molecules/Breadcrumb'
+
+interface Props {
+  title: string
+  heading: string
+  description?: string
+}
+
+const { title, heading, description } = Astro.props
+---
+
+<StorefrontLayout title={title} noindex>
+  <div class="container-page py-8 lg:py-12">
+    <Breadcrumb items={[{ label: 'Beranda', href: '/' }, { label: 'Akun saya', href: '/account' }, { label: heading }]} />
+    <div class="mt-6 grid gap-8 lg:grid-cols-[260px_1fr]">
+      <AccountNav client:load user={Astro.locals.user} currentPath={Astro.url.pathname} />
+      <section>
+        <header class="mb-6">
+          <h1 class="font-display text-3xl font-semibold">{heading}</h1>
+          {description ? <p class="mt-1 text-ink-500">{description}</p> : null}
+        </header>
+        <slot />
+      </section>
+    </div>
+  </div>
+</StorefrontLayout>

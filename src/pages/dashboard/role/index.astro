@@ -1,0 +1,10 @@
+---
+import DashboardLayout from '@/components/templates/DashboardLayout.astro'
+import { RoleTable } from '@/components/organisms/admin/roles/RoleTable'
+import { buttonClasses } from '@/components/atoms/Button'
+---
+
+<DashboardLayout title="Role" heading="Role" description="Peran pengguna di Fresh Market." breadcrumbs={[{ label: 'Role' }]}>
+  <a slot="actions" href="/dashboard/role/create" class={buttonClasses({})}>Tambah role</a>
+  <RoleTable client:load />
+</DashboardLayout>

@@ -1,0 +1,40 @@
+---
+import { Leaf, ShieldCheck, Truck } from 'lucide-react'
+
+const items = [
+  {
+    icon: Truck,
+    title: 'Pengiriman cepat',
+    description: 'Pesan sebelum jam 11 siang, pesanan diantar di hari yang sama.',
+  },
+  {
+    icon: Leaf,
+    title: '100% segar',
+    description: 'Dipilih langsung dari pasar setiap pagi oleh tim kurasi kami.',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Pembayaran aman',
+    description: 'Bayar di tempat atau online melalui Midtrans yang terenkripsi.',
+  },
+]
+---
+
+<section class="container-page mt-16">
+  <div class="rounded-[2rem] bg-cream-100 px-6 py-10 sm:px-10">
+    <h2 class="text-center font-display text-3xl font-semibold">Kenapa belanja di Fresh Market?</h2>
+    <ul class="mt-8 grid gap-6 md:grid-cols-3">
+      {
+        items.map(({ icon: Icon, title, description }) => (
+          <li class="flex flex-col items-center gap-3 text-center">
+            <span class="flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-leaf-700 shadow-card">
+              <Icon className="h-6 w-6" />
+            </span>
+            <h3 class="text-base font-bold">{title}</h3>
+            <p class="max-w-xs text-sm text-ink-500">{description}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

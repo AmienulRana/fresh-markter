@@ -1,0 +1,8 @@
+---
+import DashboardLayout from '@/components/templates/DashboardLayout.astro'
+import { DashboardSummary } from '@/components/organisms/admin/DashboardSummary'
+---
+
+<DashboardLayout title="Dashboard" heading="Dashboard" description="Ringkasan aktivitas toko hari ini.">
+  <DashboardSummary client:load user={Astro.locals.user} />
+</DashboardLayout>

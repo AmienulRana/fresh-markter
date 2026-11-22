@@ -1,0 +1,13 @@
+---
+import DashboardLayout from '@/components/templates/DashboardLayout.astro'
+import { NotificationList } from '@/components/organisms/notifications/NotificationList'
+---
+
+<DashboardLayout
+  title="Notifikasi"
+  heading="Notifikasi"
+  description="Notifikasi yang dikirim ke akun admin ini."
+  breadcrumbs={[{ label: 'Notifikasi' }]}
+>
+  <NotificationList client:load />
+</DashboardLayout>

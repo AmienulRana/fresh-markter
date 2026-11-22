@@ -1,0 +1,62 @@
+---
+import BaseLayout from './BaseLayout.astro'
+import { Logo } from '@/components/atoms/Logo'
+
+interface Props {
+  title: string
+  heading: string
+  subheading?: string
+}
+
+const { title, heading, subheading } = Astro.props
+const isSignIn = Astro.url.pathname.startsWith('/auth/signin')
+---
+
+<BaseLayout title={title} noindex>
+  <div class="grid min-h-screen lg:grid-cols-[1fr_1.1fr]">
+    <aside class="relative hidden overflow-hidden bg-leaf-700 p-12 text-white lg:flex lg:flex-col lg:justify-between">
+      <a href="/" aria-label="Fresh Market, ke beranda" class="relative z-10">
+        <Logo tone="light" />
+      </a>
+      <div class="relative z-10 max-w-md">
+        <h2 class="font-display text-4xl leading-tight font-semibold text-white">
+          Belanja dapur tanpa ke pasar.
+        </h2>
+        <p class="mt-4 text-leaf-100">
+          Sayur dan buah dipilih pagi hari oleh tim kami, dikemas higienis, lalu diantar langsung ke rumahmu.
+        </p>
+      </div>
+      <ul class="relative z-10 grid grid-cols-3 gap-4 text-sm text-leaf-100">
+        <li><strong class="block text-2xl text-white">100%</strong>Segar setiap hari</li>
+        <li><strong class="block text-2xl text-white">1 hari</strong>Sampai di rumah</li>
+        <li><strong class="block text-2xl text-white">COD</strong>Bayar di tempat</li>
+      </ul>
+      <svg aria-hidden="true" viewBox="0 0 400 400" class="absolute -right-24 -bottom-24 h-[28rem] w-[28rem] opacity-20">
+        <circle cx="200" cy="200" r="180" fill="#AFD9BD"></circle>
+        <path d="M200 60c80 20 120 90 100 170-60 0-110-50-100-170Z" fill="#2E7D4F"></path>
+        <path d="M200 60c-80 20-120 90-100 170 60 0 110-50 100-170Z" fill="#3F9A64"></path>
+      </svg>
+    </aside>
+    <main class="flex flex-col px-4 py-8 sm:px-10">
+      <div class="flex items-center justify-between">
+        <a href="/" class="lg:hidden" aria-label="Fresh Market, ke beranda"><Logo /></a>
+        <p class="ml-auto text-sm text-ink-500">
+          {
+            isSignIn ? (
+              <>Belum punya akun? <a href="/auth/signup" class="font-semibold text-leaf-700 hover:underline">Daftar</a></>
+            ) : (
+              <>Sudah punya akun? <a href="/auth/signin" class="font-semibold text-leaf-700 hover:underline">Masuk</a></>
+            )
+          }
+        </p>
+      </div>
+      <div class="mx-auto flex w-full max-w-md flex-1 flex-col justify-center py-10">
+        <h1 class="font-display text-3xl font-semibold">{heading}</h1>
+        {subheading ? <p class="mt-2 text-ink-500">{subheading}</p> : null}
+        <div class="mt-8">
+          <slot />
+        </div>
+      </div>
+    </main>
+  </div>
+</BaseLayout>

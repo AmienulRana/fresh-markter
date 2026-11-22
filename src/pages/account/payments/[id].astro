@@ -1,0 +1,10 @@
+---
+import AccountLayout from '@/components/templates/AccountLayout.astro'
+import { PaymentDetailPanel } from '@/components/organisms/payments/PaymentDetailPanel'
+
+const id = Astro.params.id ?? ''
+---
+
+<AccountLayout title="Detail pembayaran" heading="Detail pembayaran">
+  <PaymentDetailPanel client:only="react" paymentId={id} scope="mine" />
+</AccountLayout>

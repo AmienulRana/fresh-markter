@@ -1,0 +1,13 @@
+---
+import DashboardLayout from '@/components/templates/DashboardLayout.astro'
+import { PaymentTable } from '@/components/organisms/admin/payments/PaymentTable'
+---
+
+<DashboardLayout
+  title="Pembayaran"
+  heading="Pembayaran"
+  description="Riwayat transaksi pembayaran pelanggan."
+  breadcrumbs={[{ label: 'Pembayaran' }]}
+>
+  <PaymentTable client:load />
+</DashboardLayout>

@@ -1,0 +1,10 @@
+---
+import AccountLayout from '@/components/templates/AccountLayout.astro'
+import { OrderDetailView } from '@/components/organisms/account/OrderDetailView'
+
+const ref = Astro.params.ref ?? ''
+---
+
+<AccountLayout title="Detail pesanan" heading="Detail pesanan" description="Rincian produk, pembayaran, dan pengiriman.">
+  <OrderDetailView client:only="react" orderRef={ref} />
+</AccountLayout>

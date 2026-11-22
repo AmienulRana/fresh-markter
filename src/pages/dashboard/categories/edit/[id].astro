@@ -1,0 +1,14 @@
+---
+import DashboardLayout from '@/components/templates/DashboardLayout.astro'
+import { CategoryForm } from '@/components/organisms/admin/categories/CategoryForm'
+
+const id = Astro.params.id ?? ''
+---
+
+<DashboardLayout
+  title="Ubah kategori"
+  heading="Ubah kategori"
+  breadcrumbs={[{ label: 'Kategori', href: '/dashboard/categories' }, { label: 'Ubah' }]}
+>
+  <CategoryForm client:only="react" categoryId={id} />
+</DashboardLayout>

@@ -1,0 +1,13 @@
+---
+import StorefrontLayout from '@/components/templates/StorefrontLayout.astro'
+import { CartView } from '@/components/organisms/cart/CartView'
+import { Breadcrumb } from '@/components/molecules/Breadcrumb'
+---
+
+<StorefrontLayout title="Keranjang" noindex>
+  <div class="container-page py-8 lg:py-10">
+    <Breadcrumb items={[{ label: 'Beranda', href: '/' }, { label: 'Belanja', href: '/shop' }, { label: 'Keranjang' }]} />
+    <h1 class="mt-4 mb-6 font-display text-3xl font-semibold">Keranjang belanja</h1>
+    <CartView client:load />
+  </div>
+</StorefrontLayout>

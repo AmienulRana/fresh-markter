@@ -1,0 +1,10 @@
+---
+import DashboardLayout from '@/components/templates/DashboardLayout.astro'
+import { CategoryTable } from '@/components/organisms/admin/categories/CategoryTable'
+import { buttonClasses } from '@/components/atoms/Button'
+---
+
+<DashboardLayout title="Kategori" heading="Kategori" description="Kelompokkan produk agar mudah ditemukan." breadcrumbs={[{ label: 'Kategori' }]}>
+  <a slot="actions" href="/dashboard/categories/create" class={buttonClasses({})}>Tambah kategori</a>
+  <CategoryTable client:load />
+</DashboardLayout>

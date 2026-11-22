@@ -1,0 +1,8 @@
+---
+import AccountLayout from '@/components/templates/AccountLayout.astro'
+import { OrderHistory } from '@/components/organisms/account/OrderHistory'
+---
+
+<AccountLayout title="Pesanan saya" heading="Pesanan saya" description="Pantau status semua pesananmu di sini.">
+  <OrderHistory client:load />
+</AccountLayout>

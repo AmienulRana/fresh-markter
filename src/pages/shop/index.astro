@@ -1,0 +1,30 @@
+---
+import StorefrontLayout from '@/components/templates/StorefrontLayout.astro'
+import { ShopView } from '@/components/organisms/shop/ShopView'
+import { safeLoad, serverApi } from '@/lib/api/ssr'
+import { parseShopFilters, toShopParams } from '@/stores/shop-filters'
+
+const filters = parseShopFilters(Astro.url.searchParams)
+const api = serverApi(Astro.locals)
+const [categories, products] = await Promise.all([
+  safeLoad(() => api.categories.home()),
+  safeLoad(() => api.products.shop(toShopParams(filters))),
+])
+
+const activeCategory = categories?.find((category) => category.slug === filters.category)
+const title = activeCategory?.name ?? (filters.search ? `Cari “${filters.search}”` : 'Belanja')
+---
+
+<StorefrontLayout
+  title={title}
+  description="Belanja sayur, buah, dan kebutuhan dapur segar dengan harga pasar di Fresh Market."
+  categories={categories ?? undefined}
+  search={filters.search}
+>
+  <ShopView
+    client:load
+    initialFilters={filters}
+    initialData={products}
+    initialCategories={categories ?? undefined}
+  />
+</StorefrontLayout>

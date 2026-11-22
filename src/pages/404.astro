@@ -1,0 +1,16 @@
+---
+import StorefrontLayout from '@/components/templates/StorefrontLayout.astro'
+import { buttonClasses } from '@/components/atoms/Button'
+---
+
+<StorefrontLayout title="Halaman tidak ditemukan" noindex>
+  <div class="container-page flex flex-col items-center gap-4 py-24 text-center">
+    <p class="font-display text-7xl font-semibold text-leaf-600">404</p>
+    <h1 class="font-display text-3xl font-semibold">Ups, halaman ini sudah habis terjual</h1>
+    <p class="max-w-md text-ink-500">Halaman yang kamu cari tidak ada atau sudah dipindahkan.</p>
+    <div class="flex gap-2">
+      <a href="/" class={buttonClasses({ variant: 'outline' })}>Ke beranda</a>
+      <a href="/shop" class={buttonClasses({})}>Mulai belanja</a>
+    </div>
+  </div>
+</StorefrontLayout>

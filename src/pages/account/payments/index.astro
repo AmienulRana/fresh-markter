@@ -1,0 +1,8 @@
+---
+import AccountLayout from '@/components/templates/AccountLayout.astro'
+import { PaymentHistory } from '@/components/organisms/account/PaymentHistory'
+---
+
+<AccountLayout title="Pembayaran" heading="Pembayaran" description="Riwayat pembayaran semua pesananmu.">
+  <PaymentHistory client:load />
+</AccountLayout>

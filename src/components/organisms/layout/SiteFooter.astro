@@ -1,0 +1,75 @@
+---
+import { Logo } from '@/components/atoms/Logo'
+
+const year = new Date().getFullYear()
+
+const sections = [
+  {
+    title: 'Belanja',
+    links: [
+      { label: 'Semua produk', href: '/shop' },
+      { label: 'Produk terbaru', href: '/shop?orderBy=newest' },
+      { label: 'Harga terendah', href: '/shop?orderBy=price_asc' },
+      { label: 'Keranjang', href: '/shop/cart' },
+    ],
+  },
+  {
+    title: 'Akun',
+    links: [
+      { label: 'Masuk', href: '/auth/signin' },
+      { label: 'Daftar', href: '/auth/signup' },
+      { label: 'Pesanan saya', href: '/account' },
+      { label: 'Pengaturan akun', href: '/account/setting' },
+    ],
+  },
+  {
+    title: 'Bantuan',
+    links: [
+      { label: 'Cara berbelanja', href: '/shop' },
+      { label: 'Pengiriman', href: '/shop' },
+      { label: 'Metode pembayaran', href: '/shop' },
+      { label: 'Lupa password', href: '/auth/forgot-password' },
+    ],
+  },
+]
+
+const payments = ['COD', 'Transfer Bank', 'E-Wallet', 'Kartu']
+---
+
+<footer class="mt-20 bg-leaf-900 text-leaf-100">
+  <div class="container-page grid gap-10 py-14 md:grid-cols-[1.4fr_repeat(3,1fr)]">
+    <div class="flex max-w-xs flex-col gap-4">
+      <a href="/" aria-label="Fresh Market, ke beranda">
+        <Logo tone="light" />
+      </a>
+      <p class="text-sm leading-relaxed text-leaf-200">
+        Sayur, buah, dan kebutuhan dapur pilihan langsung dari pasar. Dipilih pagi, diantar hari ini.
+      </p>
+      <ul class="flex flex-wrap gap-2">
+        {payments.map((item) => <li class="rounded-full bg-leaf-800 px-3 py-1 text-xs font-semibold text-leaf-100">{item}</li>)}
+      </ul>
+    </div>
+    {
+      sections.map((section) => (
+        <div>
+          <h2 class="mb-4 text-sm font-bold tracking-wide text-white uppercase">{section.title}</h2>
+          <ul class="flex flex-col gap-2.5">
+            {section.links.map((link) => (
+              <li>
+                <a href={link.href} class="text-sm text-leaf-200 hover:text-white">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+  <div class="border-t border-leaf-800">
+    <div class="container-page flex flex-col items-center justify-between gap-2 py-6 text-xs text-leaf-200 sm:flex-row">
+      <p>© {year} Fresh Market. Seluruh hak cipta dilindungi.</p>
+      <p>Dibuat dengan sepenuh hati untuk dapur Indonesia.</p>
+    </div>
+  </div>
+</footer>

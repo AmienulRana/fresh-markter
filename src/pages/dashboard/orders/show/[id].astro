@@ -1,0 +1,14 @@
+---
+import DashboardLayout from '@/components/templates/DashboardLayout.astro'
+import { OrderDetailPanel } from '@/components/organisms/admin/orders/OrderDetailPanel'
+
+const id = Astro.params.id ?? ''
+---
+
+<DashboardLayout
+  title="Detail pesanan"
+  heading="Detail pesanan"
+  breadcrumbs={[{ label: 'Pesanan', href: '/dashboard/orders' }, { label: 'Detail' }]}
+>
+  <OrderDetailPanel client:only="react" orderId={id} />
+</DashboardLayout>

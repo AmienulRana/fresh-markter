@@ -1,0 +1,8 @@
+---
+import AuthLayout from '@/components/templates/AuthLayout.astro'
+import { SignUpForm } from '@/components/organisms/auth/SignUpForm'
+---
+
+<AuthLayout title="Daftar" heading="Buat akun Fresh Market" subheading="Gratis, cepat, dan langsung bisa belanja.">
+  <SignUpForm client:load />
+</AuthLayout>

@@ -1,0 +1,21 @@
+---
+import AccountLayout from '@/components/templates/AccountLayout.astro'
+import { ProfileForm } from '@/components/organisms/account/ProfileForm'
+
+const redirect = Astro.url.searchParams.get('redirect')
+---
+
+<AccountLayout
+  title="Pengaturan akun"
+  heading="Pengaturan akun"
+  description="Perbarui data diri dan alamat pengirimanmu."
+>
+  {
+    redirect ? (
+      <div class="mb-4 rounded-2xl bg-sun-100 px-4 py-3 text-sm font-medium text-ink-700">
+        Lengkapi alamat dan nomor telepon untuk melanjutkan checkout.
+      </div>
+    ) : null
+  }
+  <ProfileForm client:load redirect={redirect} />
+</AccountLayout>

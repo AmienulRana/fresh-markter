@@ -1,0 +1,49 @@
+---
+import { buttonClasses } from '@/components/atoms/Button'
+---
+
+<section class="container-page pt-6 lg:pt-10">
+  <div class="relative grid overflow-hidden rounded-[2rem] bg-leaf-700 lg:grid-cols-2">
+    <div class="relative z-10 flex flex-col justify-center gap-6 px-6 py-12 sm:px-12 lg:py-20">
+      <span class="inline-flex w-fit items-center gap-2 rounded-full bg-leaf-600 px-3 py-1 text-xs font-semibold text-leaf-100">
+        <span class="h-2 w-2 rounded-full bg-sun-400"></span>
+        Dipetik pagi, diantar hari ini
+      </span>
+      <h1 class="font-display text-4xl leading-[1.05] font-semibold text-white sm:text-5xl lg:text-6xl">
+        Segar dari pasar,<br /> sampai di depan pintu.
+      </h1>
+      <p class="max-w-md text-base text-leaf-100 sm:text-lg">
+        Sayur, buah, dan bumbu dapur pilihan dengan harga pasar. Pesan sekarang, masak hari ini.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a href="/shop" class={buttonClasses({ variant: 'accent', size: 'lg' })}>Mulai belanja</a>
+        <a
+          href="/shop?orderBy=newest"
+          class={buttonClasses({ variant: 'outline', size: 'lg', className: 'border-leaf-500 bg-transparent text-white hover:bg-leaf-600 hover:border-leaf-400' })}
+        >
+          Produk terbaru
+        </a>
+      </div>
+    </div>
+    <div class="relative hidden min-h-80 lg:block" aria-hidden="true">
+      <svg viewBox="0 0 520 480" class="absolute inset-0 h-full w-full">
+        <circle cx="300" cy="250" r="210" fill="#3F9A64"></circle>
+        <circle cx="300" cy="250" r="150" fill="#56A874"></circle>
+        <path d="M168 238h264l-26 150a34 34 0 0 1-33 28H227a34 34 0 0 1-33-28l-26-150Z" fill="#FBF8F2"></path>
+        <path d="M168 238h264" stroke="#EBE2D0" stroke-width="16" stroke-linecap="round"></path>
+        <path d="M230 285v80M300 285v80M370 285v80" stroke="#D6ECDD" stroke-width="10" stroke-linecap="round"></path>
+        <circle cx="236" cy="200" r="46" fill="#D9483B"></circle>
+        <path d="M236 154c6-14 18-20 30-20-4 14-14 20-30 20Z" fill="#2E7D4F"></path>
+        <ellipse cx="318" cy="186" rx="38" ry="58" fill="#F0773A" transform="rotate(28 318 186)"></ellipse>
+        <path d="M340 132c8-22 30-30 46-26-10 18-26 26-46 26Z" fill="#23623E"></path>
+        <path d="M344 136c-2-20 6-38 22-46 2 20-6 36-22 46Z" fill="#2E7D4F"></path>
+        <circle cx="388" cy="214" r="32" fill="#F5C344"></circle>
+        <path d="M196 196c-30-36-20-78 10-96 22 34 14 70-10 96Z" fill="#7FBF96"></path>
+        <path d="M196 196c-4-30 0-62 10-96" stroke="#2E7D4F" stroke-width="4" stroke-linecap="round"></path>
+        <circle cx="120" cy="120" r="10" fill="#F5C344"></circle>
+        <circle cx="470" cy="380" r="14" fill="#F0773A"></circle>
+        <circle cx="460" cy="96" r="8" fill="#AFD9BD"></circle>
+      </svg>
+    </div>
+  </div>
+</section>

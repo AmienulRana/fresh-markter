@@ -1,0 +1,8 @@
+---
+import AccountLayout from '@/components/templates/AccountLayout.astro'
+import { NotificationList } from '@/components/organisms/notifications/NotificationList'
+---
+
+<AccountLayout title="Notifikasi" heading="Notifikasi" description="Kabar terbaru tentang pesanan dan akunmu.">
+  <NotificationList client:load />
+</AccountLayout>

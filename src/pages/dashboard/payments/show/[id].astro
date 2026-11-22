@@ -1,0 +1,14 @@
+---
+import DashboardLayout from '@/components/templates/DashboardLayout.astro'
+import { PaymentDetailPanel } from '@/components/organisms/payments/PaymentDetailPanel'
+
+const id = Astro.params.id ?? ''
+---
+
+<DashboardLayout
+  title="Detail pembayaran"
+  heading="Detail pembayaran"
+  breadcrumbs={[{ label: 'Pembayaran', href: '/dashboard/payments' }, { label: 'Detail' }]}
+>
+  <PaymentDetailPanel client:only="react" paymentId={id} scope="admin" />
+</DashboardLayout>

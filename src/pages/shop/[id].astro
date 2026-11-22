@@ -1,0 +1,43 @@
+---
+import StorefrontLayout from '@/components/templates/StorefrontLayout.astro'
+import { ProductDetailView } from '@/components/organisms/product/ProductDetailView'
+import { safeLoad, serverApi } from '@/lib/api/ssr'
+import { serializeJson } from '@/lib/utils'
+
+const id = Astro.params.id ?? ''
+if (!/^\d+$/.test(id)) return Astro.redirect('/shop')
+
+const product = await safeLoad(() => serverApi(Astro.locals).products.detail(id))
+if (!product) Astro.response.status = 404
+
+const description = (product?.product_description || product?.description || '').slice(0, 160)
+const price = product ? product.sale_price || product.reguler_price : 0
+const jsonLd = product
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: product.product_name,
+      image: product.product_image ? [product.product_image] : undefined,
+      description: description || undefined,
+      category: product.category_name,
+      offers: {
+        '@type': 'Offer',
+        priceCurrency: 'IDR',
+        price,
+        availability:
+          product.stock !== undefined && Number(product.stock) <= 0
+            ? 'https://schema.org/OutOfStock'
+            : 'https://schema.org/InStock',
+      },
+    }
+  : null
+---
+
+<StorefrontLayout
+  title={product?.product_name ?? 'Produk tidak ditemukan'}
+  description={description || undefined}
+  image={product?.product_image}
+>
+  {jsonLd ? <script slot="head" type="application/ld+json" set:html={serializeJson(jsonLd)} /> : null}
+  <ProductDetailView client:load productId={id} initialData={product} />
+</StorefrontLayout>

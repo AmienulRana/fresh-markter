@@ -1,0 +1,21 @@
+---
+import StorefrontLayout from '@/components/templates/StorefrontLayout.astro'
+import HeroBanner from '@/components/organisms/home/HeroBanner.astro'
+import ValueProps from '@/components/organisms/home/ValueProps.astro'
+import { CategoryCarousel } from '@/components/organisms/home/CategoryCarousel'
+import { NewProducts } from '@/components/organisms/home/NewProducts'
+import { safeLoad, serverApi } from '@/lib/api/ssr'
+
+const api = serverApi(Astro.locals)
+const [categories, products] = await Promise.all([
+  safeLoad(() => api.categories.home()),
+  safeLoad(() => api.products.home()),
+])
+---
+
+<StorefrontLayout categories={categories ?? undefined}>
+  <HeroBanner />
+  <CategoryCarousel client:load initialData={categories ?? undefined} />
+  <NewProducts client:load initialData={products ?? undefined} />
+  <ValueProps />
+</StorefrontLayout>

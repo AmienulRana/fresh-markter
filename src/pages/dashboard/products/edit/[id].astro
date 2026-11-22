@@ -1,0 +1,14 @@
+---
+import DashboardLayout from '@/components/templates/DashboardLayout.astro'
+import { ProductForm } from '@/components/organisms/admin/products/ProductForm'
+
+const id = Astro.params.id ?? ''
+---
+
+<DashboardLayout
+  title="Ubah produk"
+  heading="Ubah produk"
+  breadcrumbs={[{ label: 'Produk', href: '/dashboard/products' }, { label: 'Ubah' }]}
+>
+  <ProductForm client:only="react" productId={id} />
+</DashboardLayout>

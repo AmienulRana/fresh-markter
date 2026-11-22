@@ -1,0 +1,10 @@
+---
+import DashboardLayout from '@/components/templates/DashboardLayout.astro'
+import { ProductTable } from '@/components/organisms/admin/products/ProductTable'
+import { buttonClasses } from '@/components/atoms/Button'
+---
+
+<DashboardLayout title="Produk" heading="Produk" description="Kelola katalog produk toko." breadcrumbs={[{ label: 'Produk' }]}>
+  <a slot="actions" href="/dashboard/products/create" class={buttonClasses({})}>Tambah produk</a>
+  <ProductTable client:load />
+</DashboardLayout>

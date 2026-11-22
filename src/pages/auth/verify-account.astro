@@ -1,0 +1,11 @@
+---
+import AuthLayout from '@/components/templates/AuthLayout.astro'
+import { VerifyAccount } from '@/components/organisms/auth/VerifyAccount'
+
+const token = Astro.url.searchParams.get('token')
+if (!token) return Astro.redirect('/auth/signin')
+---
+
+<AuthLayout title="Verifikasi akun" heading="Verifikasi akun">
+  <VerifyAccount client:load token={token} />
+</AuthLayout>

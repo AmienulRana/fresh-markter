@@ -1,0 +1,52 @@
+---
+import '@/styles/global.css'
+import { GlobalOverlays } from '@/components/organisms/GlobalOverlays'
+import { SESSION_SCRIPT_ID } from '@/stores/session'
+import { serializeJson } from '@/lib/utils'
+
+interface Props {
+  title?: string
+  description?: string
+  image?: string
+  noindex?: boolean
+  bodyClass?: string
+}
+
+const {
+  title,
+  description = 'Fresh Market — belanja sayur, buah, dan kebutuhan dapur segar, diantar di hari yang sama.',
+  image,
+  noindex = false,
+  bodyClass,
+} = Astro.props
+
+const fullTitle = title ? `${title} · Fresh Market` : 'Fresh Market — Segar dari pasar, sampai di depan pintu'
+const canonical = new URL(Astro.url.pathname, Astro.url.origin).href
+const session = Astro.locals.user ?? null
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#2E7D4F" />
+    <meta property="og:site_name" content="Fresh Market" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    {image ? <meta property="og:image" content={image} /> : null}
+    {noindex ? <meta name="robots" content="noindex, nofollow" /> : null}
+    <script type="application/json" id={SESSION_SCRIPT_ID} set:html={serializeJson(session)} />
+    <slot name="head" />
+  </head>
+  <body class={bodyClass}>
+    <slot />
+    <GlobalOverlays client:load />
+  </body>
+</html>

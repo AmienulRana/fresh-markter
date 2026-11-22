@@ -1,0 +1,13 @@
+---
+import StorefrontLayout from '@/components/templates/StorefrontLayout.astro'
+import { CheckoutView } from '@/components/organisms/checkout/CheckoutView'
+import { Breadcrumb } from '@/components/molecules/Breadcrumb'
+---
+
+<StorefrontLayout title="Checkout" noindex>
+  <div class="container-page py-8 lg:py-10">
+    <Breadcrumb items={[{ label: 'Beranda', href: '/' }, { label: 'Keranjang', href: '/shop/cart' }, { label: 'Checkout' }]} />
+    <h1 class="mt-4 mb-6 font-display text-3xl font-semibold">Checkout</h1>
+    <CheckoutView client:only="react" />
+  </div>
+</StorefrontLayout>

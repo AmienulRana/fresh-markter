@@ -1,0 +1,10 @@
+---
+import AuthLayout from '@/components/templates/AuthLayout.astro'
+import { SignInPanel } from '@/components/organisms/auth/SignInPanel'
+
+const redirect = Astro.url.searchParams.get('redirect')
+---
+
+<AuthLayout title="Masuk" heading="Selamat datang kembali" subheading="Masuk untuk melanjutkan belanja kebutuhan dapurmu.">
+  <SignInPanel client:load redirect={redirect} />
+</AuthLayout>

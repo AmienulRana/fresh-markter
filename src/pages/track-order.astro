@@ -1,0 +1,16 @@
+---
+import StorefrontLayout from '@/components/templates/StorefrontLayout.astro'
+import { TrackOrderForm } from '@/components/organisms/orders/TrackOrderForm'
+import { Breadcrumb } from '@/components/molecules/Breadcrumb'
+
+const code = Astro.url.searchParams.get('code') ?? ''
+---
+
+<StorefrontLayout title="Lacak pesanan" description="Cek status pesanan Fresh Market dengan kode pesanan.">
+  <div class="container-page py-8 lg:py-12">
+    <Breadcrumb items={[{ label: 'Beranda', href: '/' }, { label: 'Lacak pesanan' }]} />
+    <div class="mt-6">
+      <TrackOrderForm client:load user={Astro.locals.user} initialCode={code} />
+    </div>
+  </div>
+</StorefrontLayout>

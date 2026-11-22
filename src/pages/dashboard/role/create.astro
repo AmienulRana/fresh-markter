@@ -1,0 +1,8 @@
+---
+import DashboardLayout from '@/components/templates/DashboardLayout.astro'
+import { RoleForm } from '@/components/organisms/admin/roles/RoleForm'
+---
+
+<DashboardLayout title="Tambah role" heading="Tambah role" breadcrumbs={[{ label: 'Role', href: '/dashboard/role' }, { label: 'Tambah' }]}>
+  <RoleForm client:only="react" />
+</DashboardLayout>

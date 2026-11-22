@@ -1,0 +1,14 @@
+---
+import StorefrontLayout from '@/components/templates/StorefrontLayout.astro'
+import { PaymentSuccess } from '@/components/organisms/checkout/PaymentSuccess'
+
+const pending = Astro.url.searchParams.get('status') === 'pending'
+const order = Astro.url.searchParams.get('order') ?? Astro.url.searchParams.get('order_id') ?? ''
+const orderRef = /^[A-Za-z0-9-]{1,64}$/.test(order) ? order : ''
+---
+
+<StorefrontLayout title="Pesanan berhasil" noindex>
+  <div class="container-page py-12 lg:py-20">
+    <PaymentSuccess client:load pending={pending} orderRef={orderRef} />
+  </div>
+</StorefrontLayout>

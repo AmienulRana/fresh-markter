@@ -1,0 +1,10 @@
+---
+import DashboardLayout from '@/components/templates/DashboardLayout.astro'
+import { CustomerTable } from '@/components/organisms/admin/customers/CustomerTable'
+import { buttonClasses } from '@/components/atoms/Button'
+---
+
+<DashboardLayout title="Pelanggan" heading="Pelanggan" description="Data pelanggan yang terdaftar." breadcrumbs={[{ label: 'Pelanggan' }]}>
+  <a slot="actions" href="/dashboard/customers/create" class={buttonClasses({})}>Tambah pelanggan</a>
+  <CustomerTable client:load />
+</DashboardLayout>

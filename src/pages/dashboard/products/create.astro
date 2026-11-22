@@ -1,0 +1,12 @@
+---
+import DashboardLayout from '@/components/templates/DashboardLayout.astro'
+import { ProductForm } from '@/components/organisms/admin/products/ProductForm'
+---
+
+<DashboardLayout
+  title="Tambah produk"
+  heading="Tambah produk"
+  breadcrumbs={[{ label: 'Produk', href: '/dashboard/products' }, { label: 'Tambah' }]}
+>
+  <ProductForm client:only="react" />
+</DashboardLayout>
